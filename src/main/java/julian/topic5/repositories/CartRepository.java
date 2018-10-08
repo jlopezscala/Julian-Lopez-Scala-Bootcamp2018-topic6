@@ -1,7 +1,8 @@
 package julian.topic5.repositories;
 
-import julian.topic5.entity.User;
+import julian.topic5.entity.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-interface UserRepository extends JpaRepository<User, Integer> {
+interface CartRepository extends JpaRepository<Cart, Integer> {
+
 }

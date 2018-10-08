@@ -4,15 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+import javax.persistence.*;
 import java.util.ArrayList;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-
+@Entity
 public class Cart {
 
     private ArrayList<Product> cart;
-    private int id;
+    private float subtotal;
+    private @Id @GeneratedValue int id;
 
+    public Cart (){
+        cart = new ArrayList<Product>();
+        subtotal = 0;
+    }
 }
