@@ -7,6 +7,8 @@ import julian.topic5.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 @AllArgsConstructor
@@ -15,9 +17,23 @@ public class CartService {
     private CartRepository cartRepository;
     private ProductRepository productRepository;
 
-    public Cart addProduct(Product product){
-
-
+    public Cart addCart(Cart cart){
+        return cartRepository.save(cart);
     }
 
+    public Cart getCart(int id){
+        return cartRepository.getOne(id);
+    }
+
+    public List<Cart> getAll(){
+        return cartRepository.findAll();
+    }
+
+    public float getTotal(Cart cart){
+        return cart.getSubtotal();
+    }
+
+    public void deleteCart(int id){
+        cartRepository.deleteById(id);
+    }
 }

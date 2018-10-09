@@ -4,6 +4,7 @@ package julian.topic5.controller;
 import julian.topic5.entity.Product;
 import julian.topic5.repositories.CartRepository;
 import julian.topic5.repositories.ProductRepository;
+import julian.topic5.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,28 +14,27 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    private final ProductRepository repository;
+    private final ProductService productService;
 
-    public ProductController(ProductRepository repository) {
-        this.repository = repository;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
     @GetMapping(path = "/products")
     List<Product> getAll(){
-        return repository.findAll();
+        return productService.getAll();
     }
 
     @GetMapping(path = "/products/{id}")
     Product getProduct(@PathVariable int id){
-        Product product = repository.getOne(id);
-        return product;
+        return productService.getProduct(id);
     }
+
     @PostMapping(path = "/products/add")
     Product addProduct(@RequestParam (name = "name") String name,
                        @RequestParam (name = "price") float price){
         Product product = new Product(name, price);
-        repository.save(product);
-        return product;
+        return productService.addProduct(product);
     }
 
 

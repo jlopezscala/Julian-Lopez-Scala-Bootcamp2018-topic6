@@ -12,12 +12,12 @@ import java.util.ArrayList;
 @Entity
 public class Cart {
 
-    private ArrayList<Product> cart;
+    private ArrayList<Integer> cart;
     private float subtotal;
     private @Id @GeneratedValue int id;
 
     public Cart (){
-        cart = new ArrayList<Product>();
+        cart = new ArrayList<Integer>();
         subtotal = 0;
     }
 }

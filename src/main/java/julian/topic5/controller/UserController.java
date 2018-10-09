@@ -2,6 +2,7 @@ package julian.topic5.controller;
 
 import julian.topic5.entity.User;
 import julian.topic5.repositories.UserRepository;
+import julian.topic5.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -10,28 +11,27 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private final UserRepository repository;
+    private final UserService userService;
 
-    UserController(UserRepository userRepository){
-        this.repository = userRepository;
+    UserController(UserService userService){
+        this.userService = userService;
     }
 
     @GetMapping(path = "/users")
     List<User> all(){
-        return repository.findAll();
+        return userService.getAll();
     }
 
     @PostMapping(path ="/users/add")
     User addUser(@RequestParam(name = "username") String username,
                  @RequestParam(name = "password") String password){
         User usuario = new User(username, password);
-        return repository.save(usuario);
+        return userService.addUser(usuario);
     }
 
     @GetMapping(path= "/users/{id}")
     User getUser(@PathVariable int id) {
-        User usuario = repository.getOne(id);
-        return usuario;
+        return userService.getUser(id);
     }
 
 }
