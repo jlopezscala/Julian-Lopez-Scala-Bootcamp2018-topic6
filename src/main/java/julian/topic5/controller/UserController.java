@@ -1,7 +1,6 @@
 package julian.topic5.controller;
 
 import julian.topic5.entity.User;
-import julian.topic5.repositories.UserRepository;
 import julian.topic5.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
