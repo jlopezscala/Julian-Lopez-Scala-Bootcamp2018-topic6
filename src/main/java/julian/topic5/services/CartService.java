@@ -5,6 +5,7 @@ import julian.topic5.entity.Product;
 import julian.topic5.repositories.CartRepository;
 import julian.topic5.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 public class CartService {
 
+    @Autowired
     private CartRepository cartRepository;
-    private ProductRepository productRepository;
 
     public Cart addCart(Cart cart){
         return cartRepository.save(cart);

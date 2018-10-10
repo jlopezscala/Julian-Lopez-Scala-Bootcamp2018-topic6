@@ -36,6 +36,4 @@ public class ProductController {
         Product product = new Product(name, price);
         return productService.addProduct(product);
     }
-
-
 }
