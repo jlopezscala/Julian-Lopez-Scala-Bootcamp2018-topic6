@@ -16,12 +16,12 @@ public class CartController {
     }
 
     @GetMapping(path = "/carts/{id}")
-    Cart getCart(@PathVariable int id) {
+    Cart getCart(@RequestParam int id) {
         return cartService.getCart(id);
     }
 
-    @DeleteMapping(path = "/carts")
-    void deleteCart(@PathVariable int id) {
+    @DeleteMapping(path = "/carts/{id}")
+    void deleteCart(@RequestParam int id) {
         cartService.deleteCart(id);
     }
 }
