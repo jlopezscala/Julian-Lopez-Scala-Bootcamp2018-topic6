@@ -20,17 +20,17 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping(path = "/products")
+    @GetMapping(path = "/product")
     List<Product> getAll(){
         return productService.getAll();
     }
 
-    @GetMapping(path = "/products/{id}")
+    @GetMapping(path = "/product/{id}")
     Product getProduct(@PathVariable int id){
         return productService.getProduct(id);
     }
 
-    @PostMapping(path = "/products/add")
+    @PostMapping(path = "/product/add")
     Product addProduct(@RequestParam (name = "name") String name,
                        @RequestParam (name = "price") float price){
         Product product = new Product(name, price);
