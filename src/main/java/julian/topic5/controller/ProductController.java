@@ -1,13 +1,9 @@
 package julian.topic5.controller;
 
-
 import julian.topic5.entity.Product;
-import julian.topic5.repositories.CartRepository;
-import julian.topic5.repositories.ProductRepository;
 import julian.topic5.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -17,6 +13,7 @@ public class ProductController {
     private final ProductService productService;
 
     public ProductController(ProductService productService) {
+
         this.productService = productService;
     }
 
@@ -25,8 +22,8 @@ public class ProductController {
         return productService.getAll();
     }
 
-    @GetMapping(path = "/product/{id}")
-    Product getProduct(@PathVariable int id){
+    @GetMapping(path = "/products/{id}")
+    Product getProduct(@RequestParam int id){
         return productService.getProduct(id);
     }
 
@@ -35,5 +32,10 @@ public class ProductController {
                        @RequestParam (name = "price") float price){
         Product product = new Product(name, price);
         return productService.addProduct(product);
+    }
+
+    @DeleteMapping(path = "/products/{id}")
+    void deleteProduct (@RequestParam int id){
+        productService.deleteProduct(id);
     }
 }
