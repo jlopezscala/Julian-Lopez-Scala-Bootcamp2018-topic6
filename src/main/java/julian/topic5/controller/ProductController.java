@@ -1,11 +1,13 @@
 package julian.topic5.controller;
 
+import io.swagger.annotations.Api;
 import julian.topic5.entity.Product;
 import julian.topic5.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+@Api(value="onlinestoreProduct", description="Operations pertaining to products in Online Store")
 @RestController
 public class ProductController {
 
